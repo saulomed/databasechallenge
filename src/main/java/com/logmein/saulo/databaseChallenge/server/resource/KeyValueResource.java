@@ -19,7 +19,7 @@ public class KeyValueResource {
     private KeyValueRepository _repository;
 
     @ApiOperation(value = "Put key value")
-    @RequestMapping(value = "/keyvalue/{key}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/{key}", method = RequestMethod.PUT)
     public void put(@PathVariable(value = "key") String key, @RequestBody String value)
     {
         KeyValueEntity entity = new KeyValueEntity();
@@ -29,7 +29,7 @@ public class KeyValueResource {
     }
 
     @ApiOperation(value = "Get value from key")
-    @RequestMapping(value = "/keyvalue/{key}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{key}", method = RequestMethod.GET)
     public String get(@PathVariable(value = "key") String key)
     {
         return _repository.findById(key).get().getValue();
@@ -37,7 +37,7 @@ public class KeyValueResource {
     }
 
     @ApiOperation(value = "Delete key value")
-    @RequestMapping(value = "/keyvalue/{key}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{key}", method = RequestMethod.DELETE)
     public void delete(@PathVariable(value = "key") String key)
     {
         _repository.delete(key);

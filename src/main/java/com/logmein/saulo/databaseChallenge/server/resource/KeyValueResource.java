@@ -32,7 +32,8 @@ public class KeyValueResource {
     @RequestMapping(value = "/keyvalue/{key}", method = RequestMethod.GET)
     public String get(@PathVariable(value = "key") String key)
     {
-        return _repository.getById(key).getValue();
+        return _repository.findById(key).get().getValue();
+
     }
 
     @ApiOperation(value = "Delete key value")

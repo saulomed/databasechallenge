@@ -32,7 +32,7 @@ public class KeyValueUnitTests {
 
         repository.save(entity);
 
-        KeyValueEntity entityDb = repository.getById(entity.getKey());
+        KeyValueEntity entityDb = repository.findById(entity.getKey()).get();
         Assert.assertEquals(entity.getKey(),entityDb.getKey());
     }
 }

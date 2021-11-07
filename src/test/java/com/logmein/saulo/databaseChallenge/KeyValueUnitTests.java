@@ -26,13 +26,11 @@ public class KeyValueUnitTests {
     @Test
     public void givenKeyValue_whenPut_ThenGetOK()
     {
-        KeyValueEntity entity = new KeyValueEntity();
-        entity.setKey("1key");
-        entity.setValue("value key 1");
+        KeyValueEntity entity = new KeyValueEntity("1", "value of key 1");
 
         repository.save(entity);
 
-        KeyValueEntity entityDb = repository.findById(entity.getKey()).get();
+        KeyValueEntity entityDb = (KeyValueEntity) repository.findById(entity.getKey()).get();
         Assert.assertEquals(entity.getKey(),entityDb.getKey());
     }
 }

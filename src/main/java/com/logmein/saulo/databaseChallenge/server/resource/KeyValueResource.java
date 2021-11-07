@@ -22,9 +22,7 @@ public class KeyValueResource {
     @RequestMapping(value = "/{key}", method = RequestMethod.PUT)
     public void put(@PathVariable(value = "key") String key, @RequestBody String value)
     {
-        KeyValueEntity entity = new KeyValueEntity();
-        entity.setKey(key);
-        entity.setValue(value);
+        KeyValueEntity entity = new KeyValueEntity(key, value);
         _repository.save(entity);
     }
 
@@ -32,7 +30,7 @@ public class KeyValueResource {
     @RequestMapping(value = "/{key}", method = RequestMethod.GET)
     public String get(@PathVariable(value = "key") String key)
     {
-        return _repository.findById(key).get().getValue();
+        return ((KeyValueEntity)_repository.findById(key).get()).getValue();
 
     }
 

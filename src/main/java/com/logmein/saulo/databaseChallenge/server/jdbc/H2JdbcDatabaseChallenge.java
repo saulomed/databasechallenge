@@ -1,8 +1,6 @@
 package com.logmein.saulo.databaseChallenge.server.jdbc;
 
-import com.logmein.saulo.databaseChallenge.server.dto.KeyValueDTO;
 
-import java.io.File;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -223,14 +221,14 @@ public class H2JdbcDatabaseChallenge {
 
             ResultSet rs = statement.executeQuery();
 
-            KeyValueDTO dto = new KeyValueDTO();
+            String value = null;
+//            KeyValueDTO dto = new KeyValueDTO();
             while (rs.next()) {
-                dto.setKey(rs.getString("KEY"));
-                dto.setValue(rs.getString("VALUE"));
+                value = rs.getString("VALUE");
 
             }
 
-            result = dto.getValue();
+            result = value;
         } catch (SQLException e) {
             e.printStackTrace();
         }
